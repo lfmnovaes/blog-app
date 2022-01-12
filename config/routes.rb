@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  resources :users do 
-    resources :posts
+  root :to => redirect('/users')
+  resource :users, only: [:index, :show] do
+    resources :posts, only: [:index, :show]
   end
-
-  root "users#index"
 end
