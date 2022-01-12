@@ -6,9 +6,7 @@
   <% @posts.each do |post| %>
     <%= render post %>
     <p>
-      <%= link_to "Show this post", post %>
+      <h2> Post details </h2>
     </p>
   <% end %>
 </div>
-
-<%= link_to "New post", new_post_path %>
