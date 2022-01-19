@@ -3,8 +3,8 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  def recent_comments(id)
-    Comment.where(post_id: id).last(5)
+  def recent_comments
+    comments.last(5)
   end
 
   def update_counter(id)

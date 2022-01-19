@@ -1,8 +1,11 @@
 <h1>User details</h1>
 <%= render @user %>
+<%= render partial: "posts/post", collection: @posts %>
+
+<%= link_to "See all posts", user_posts_path(@user.id), class: "button" %>
 
 <div>
+  <%= link_to "Back to users", users_path %> |
   <span>Edit this user</span> |
-  <%= link_to "Back to users", users_path %>
   <span>Destroy this user</span>
 </div>

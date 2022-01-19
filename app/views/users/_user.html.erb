@@ -1,12 +1,10 @@
-<div id="<%= dom_id user %>">
-  <p>
-    <strong>Name:</strong>
-    <%= user.name %>
-  </p>
-
-  <p>
-    <strong>Posts:</strong>
-    <%= user.posts %>
-  </p>
-
+<div id="<%= dom_id user %>" class="user">
+  <img src=<%= user.photo %> alt="avatar">
+  <div class="flex info">
+    <div>
+      <strong><%= user.name %></strong>
+      <p><%= user.bio %></p>
+    </div>
+    <span class="flex counter">Number of posts: <%= user.posts_counter || 0 %></span>
+  </div>
 </div>

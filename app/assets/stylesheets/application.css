@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+
+#users {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.user {
+  display: flex;
+}
+
+.flex {
+  display: flex;
+}
+
+.info > span {
+  align-items: flex-end;
+}
