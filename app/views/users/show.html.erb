@@ -1,8 +1,13 @@
 <h1>User details</h1>
 <%= render @user %>
+<div class="bio">
+  <p>Bio:</p>
+  <p><%= @user.bio %></p>
+</div>
+
 <%= render partial: "posts/post", collection: @posts %>
 
-<%= link_to "See all posts", user_posts_path(@user.id), class: "button" %>
+<%= link_to "See all posts from this user", [@user, :posts] %>
 
 <div>
   <%= link_to "Back to users", users_path %> |

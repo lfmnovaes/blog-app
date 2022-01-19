@@ -20,12 +20,13 @@
   gap: 10px;
 }
 
-.user {
+.flex {
   display: flex;
 }
 
-.flex {
-  display: flex;
+.info {
+  justify-content: space-around;
+  flex: 2;
 }
 
 .info > span {
