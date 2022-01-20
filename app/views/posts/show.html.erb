@@ -7,6 +7,9 @@
 <%= render partial: "comments/comment", collection: @comments %>
 </br>
 <%= link_to "Create new comment", new_user_post_comment_path(@user.id, @post.id) %>
+<%= form_with url: user_post_likes_path(@user.id, @post.id) do |f| %>
+  <%= f.submit "Like" %>
+<% end %>
 <div>
   <%= link_to "Back to posts", [@user, :posts] %>
 </div>
