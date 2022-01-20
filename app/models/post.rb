@@ -4,12 +4,12 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   def recent_comments
-    comments.last(5)
+    comments.order(created_at: :desc).last(5)
   end
 
-  def update_counter(id)
-    user = User.find_by(id: id)
-    user.posts_counter = Post.where(user_id: id).count
+  def update_counter
+    user.posts_counter = 0 if user.posts_counter.nil?
+    user.posts_counter += 1
     user.save
   end
 end

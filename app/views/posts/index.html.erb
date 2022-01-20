@@ -8,7 +8,10 @@
 </br>
 <button>Pagination</button>
 <div>
-  <%= link_to "Back to user", user_path(@user.id) %> |
+  <%= link_to "New post", [:new_user_post] %> |
   <span>Edit this post</span> |
-  <span>Destroy this post</span>
+  <span>Destroy this post</span> |
+</div>
+<div>
+  <%= link_to "Back to user", user_path(@user.id) %>
 </div>

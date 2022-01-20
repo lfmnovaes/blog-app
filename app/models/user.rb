@@ -4,6 +4,6 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
 
   def recent_posts
-    posts.last(3)
+    posts.order(created_at: :desc).last(3)
   end
 end
