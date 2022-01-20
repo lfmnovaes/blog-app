@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
-    @comments = @post.recent_comments
+    @comments = @post.comments.all.order(created_at: :desc)
   end
 
   def new
@@ -20,7 +20,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         @post.update_counter
-        format.html { redirect_to [@post.user, @post], notice: "Post was successfully created." }
+        format.html { redirect_to [@post.user, @post], notice: 'Post was successfully created.' }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
 
   private
 
-    def post_params
-      params.require(:post).permit(:title, :text)
-    end
+  def post_params
+    params.require(:post).permit(:title, :text)
+  end
 end

@@ -5,6 +5,8 @@
   <span>Comments: <%= @post.comments_counter || 0 %>, Likes: <%= @post.likes_counter || 0 %></span>
 </div>
 <%= render partial: "comments/comment", collection: @comments %>
+</br>
+<%= link_to "Create new comment", new_user_post_comment_path(@user.id, @post.id) %>
 <div>
   <%= link_to "Back to posts", [@user, :posts] %>
 </div>
