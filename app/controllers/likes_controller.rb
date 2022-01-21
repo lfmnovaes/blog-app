@@ -6,7 +6,7 @@ class LikesController < ApplicationController
       @like.update_counter
       flash[:notice] = 'You successfully liked the post.'
     else
-      flash[:error] = 'You were unable to give this post a like.'
+      flash[:alert] = 'You were unable to give this post a like.'
     end
   end
 end

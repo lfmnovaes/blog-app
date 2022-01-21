@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
           flash[:notice] = 'Comment was successfully created.'
           redirect_to user_posts_path
         else
-          flash[:error] = 'Failed to create the comment.'
+          flash[:alert] = 'Failed to create the comment.'
         end
       end
     end

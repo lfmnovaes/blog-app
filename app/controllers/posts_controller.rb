@@ -19,10 +19,10 @@ class PostsController < ApplicationController
     if @post.save
       @post.update_counter
       flash[:notice] = 'Post was successfully created.'
+      redirect_to [@post.user, @post]
     else
-      flash[:error] = 'Failed to create the post.'
+      flash[:alert] = 'Failed to create the post.'
     end
-    redirect_to [@post.user, @post]
   end
 
   private
