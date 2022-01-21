@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  before(:each) {
+  before(:each) do
     @user = User.new(name: 'John', posts_counter: 1)
     @post = @user.posts.new(title: 'Lorem Ipsum', comments_counter: 0, likes_counter: 0)
     @user.save
-  }
+  end
   describe 'check if title' do
     it 'is valid' do
       expect(@post).to be_valid
@@ -50,12 +50,12 @@ RSpec.describe Post, type: :model do
     expect(@user.posts_counter).to eq(2)
   end
   describe 'check if comments post' do
-    before(:each) {
+    before(:each) do
       (1..6).each do |n|
         @post.comments.new(text: "t#{n}", user_id: @user.id)
       end
       @post.save
-    }
+    end
     it ', recent comments, has length of 5' do
       expect(@post.recent_comments.length).to eq(5)
     end

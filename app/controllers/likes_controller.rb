@@ -7,5 +7,6 @@ class LikesController < ApplicationController
       flash[:notice] = 'You successfully liked the post.'
     else
       flash[:error] = 'You were unable to give this post a like.'
+    end
   end
 end

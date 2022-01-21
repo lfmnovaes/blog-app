@@ -21,12 +21,12 @@ RSpec.describe User, type: :model do
     end
   end
   describe 'check if user posts' do
-    before(:each) {
+    before(:each) do
       (1..4).each do |n|
         @user.posts.new(title: "t#{n}", comments_counter: 0, likes_counter: 0)
       end
       @user.save
-    }
+    end
     it ',recent posts, has length of 3' do
       expect(@user.recent_posts.length).to eq(3)
     end
