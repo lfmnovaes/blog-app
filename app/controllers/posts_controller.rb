@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
-    @posts = @user.recent_posts
+    @posts = @user.posts.all.order(created_at: :desc)
   end
 
   def show
@@ -16,20 +16,18 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
-
-    respond_to do |format|
-      if @post.save
-        @post.update_counter
-        format.html { redirect_to [@post.user, @post], notice: 'Post was successfully created.' }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @post.save
+      @post.update_counter
+      flash[:notice] = 'Post was successfully created.'
+    else
+      flash[:error] = 'Failed to create the post.'
     end
+    redirect_to [@post.user, @post]
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :text)
+    params.require(:post).permit(:title, :text, :comments_counter, :likes_counter)
   end
 end
