@@ -22,7 +22,8 @@ Postgresql >= 12.0
 - Go to the cloned directory with `cd blog-app`
 - Run `bundle install` to install the necessary packages
 - Run `sudo apt install postgresql postgresql-contrib` to install the necessary database system
-- Run `rails db:create` to create the database locally
+- Make sure to run the postgresql service with `sudo service postgresql start`
+- Run `rails db:create` to create the database locally or if already have one run `rails db:reset` instead
 - After installing everything, you can run now the website with `rails s`
 
 ## Author
