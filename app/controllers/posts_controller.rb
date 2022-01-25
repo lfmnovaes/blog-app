@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts.all.order(created_at: :desc)
@@ -23,6 +24,9 @@ class PostsController < ApplicationController
     else
       flash[:alert] = 'Failed to create the post.'
     end
+  end
+
+  def destroy
   end
 
   private
