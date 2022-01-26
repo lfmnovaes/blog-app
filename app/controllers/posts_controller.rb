@@ -12,13 +12,14 @@ class PostsController < ApplicationController
   end
 
   def new
+    @user = User.find(params[:user_id])
     @post = Post.new
   end
 
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
-      @post.update_counter
+      @post.increase_counter
       flash[:notice] = 'Post was successfully created.'
       redirect_to [@post.user, @post]
     else
@@ -27,8 +28,10 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
+    if @post.destroy
+      @post.decrease_counter
+    end
+    redirect_to user_posts_path
   end
 
   private

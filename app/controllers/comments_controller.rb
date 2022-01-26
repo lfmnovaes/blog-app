@@ -1,5 +1,10 @@
 class CommentsController < ApplicationController
   load_and_authorize_resource
+  def new
+    @user = User.find(params[:user_id])
+    @post = Post.find(params[:post_id])
+  end
+
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(text: comment_params[:text], user: current_user)
@@ -7,7 +12,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html do
         if @comment.save
-          @comment.update_counter
+          @comment.increase_counter
           flash[:notice] = 'Comment was successfully created.'
           redirect_to user_posts_path
         else
@@ -15,6 +20,13 @@ class CommentsController < ApplicationController
         end
       end
     end
+  end
+
+  def destroy
+    if @comment.destroy
+      @comment.decrease_counter
+    end
+    redirect_to user_posts_path
   end
 
   private
