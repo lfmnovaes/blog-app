@@ -23,9 +23,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    if @comment.destroy
-      @comment.decrease_counter
-    end
+    @comment.decrease_counter if @comment.destroy
     redirect_to user_posts_path
   end
 

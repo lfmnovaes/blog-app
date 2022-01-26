@@ -28,9 +28,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    if @post.destroy
-      @post.decrease_counter
-    end
+    @post.decrease_counter if @post.destroy
     redirect_to user_posts_path
   end
 

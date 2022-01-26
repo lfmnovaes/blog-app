@@ -9,9 +9,9 @@ class Comment < ApplicationRecord
   end
 
   def decrease_counter
-    unless post.comments_counter <= 0 || post.comments_counter.nil?
-      post.comments_counter -= 1
-      post.save
-    end
+    return if post.comments_counter <= 0 || post.comments_counter.nil?
+
+    post.comments_counter -= 1
+    post.save
   end
 end

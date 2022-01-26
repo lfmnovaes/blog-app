@@ -16,9 +16,9 @@ class Post < ApplicationRecord
   end
 
   def decrease_counter
-    unless user.posts_counter <= 0 || user.posts_counter.nil?
-      user.posts_counter -= 1
-      user.save
-    end
+    return if user.posts_counter <= 0 || user.posts_counter.nil?
+
+    user.posts_counter -= 1
+    user.save
   end
 end
