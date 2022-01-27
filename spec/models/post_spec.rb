@@ -45,8 +45,8 @@ RSpec.describe Post, type: :model do
       expect(@post).to_not be_valid
     end
   end
-  it 'check if posts_counter method updates user' do
-    @post.update_counter
+  it 'check if increase_counter method updates user' do
+    @post.increase_counter
     expect(@user.posts_counter).to eq(2)
   end
   describe 'check if comments post' do
