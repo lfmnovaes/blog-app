@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'User index', type: :system do
-  describe 'Check the contenct' do
+  describe 'Check the content' do
     before(:each) do
       @user = User.new(name: 'Joe', photo: 'https://i.pravatar.cc/200?img=3', bio: 'joe bio', posts_counter: 0,
                        email: 'joe@mail.com', password: 'pass123')
