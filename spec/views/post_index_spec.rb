@@ -103,7 +103,7 @@ RSpec.describe 'User index', type: :system do
     it 'if shows the pagination button' do
       expect(page).to have_content('Pagination')
     end
-    it 'if shows the pagination button' do
+    it 'if redirects to the posts show page when Post details is clicked' do
       first(:link, 'Post details').click
       expect(page).to have_current_path(user_post_path(user_id: @user.id, id: @post.id))
     end
