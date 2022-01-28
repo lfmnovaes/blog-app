@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   before(:each) do
     @user = User.new(name: 'John', photo: 'https://i.pravatar.cc/200?img=3', bio: 'john bio', posts_counter: 1,
-    email: 'john@mail.com', password: 'pass123')
+                     email: 'john@mail.com', password: 'pass123')
     @user.skip_confirmation!
     @post = @user.posts.new(title: 'Lorem Ipsum', text: 'some text', comments_counter: 0, likes_counter: 0)
     @user.save
